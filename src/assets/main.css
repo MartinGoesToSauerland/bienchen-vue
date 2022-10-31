@@ -1,13 +1,20 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
+  xxx_max-width: var(--app-max-width);
+  xxx_margin: 0 auto;
   font-weight: normal;
+  display: grid;
+  grid-template-rows: auto 1fr auto;      
 }
 
+.container {
+  max-width: var(--app-max-width);
+  text-align: center;
+  margin: 0 auto;
+  padding:10px;
+}
+/*
 a,
 .green {
   text-decoration: none;
@@ -20,16 +27,242 @@ a,
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
-
+*/
+/*
 @media (min-width: 1024px) {
   body {
     display: flex;
     place-items: center;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+}
+*/
+
+main {
+  margin-top: 80px;  
+}
+
+footer {
+  background-color: black;
+  min-height:100px;  
+  color: white;
+}
+
+header {
+  z-index: 100;
+  display: flex;  
+  align-items: center;
+  justify-content: center;  
+  padding:20px;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */  
+  background-color: white;
+  xxx_max-width: var(--app-max-width);
+}
+
+.button_container {
+  position: absolute;
+  top: 30px;
+  right: 2%;
+  height: 27px;
+  width: 35px;
+  cursor: pointer;
+  z-index: 100;
+  transition: opacity 0.25s ease;
+}
+.button_container:hover {
+  opacity: 0.7;
+}
+.button_container.active .top {
+  transform: translateY(11px) translateX(0) rotate(45deg);
+  background: #FFF;
+}
+.button_container.active .middle {
+  opacity: 0;
+  background: #FFF;
+}
+.button_container.active .bottom {
+  transform: translateY(-11px) translateX(0) rotate(-45deg);
+  background: #FFF;
+}
+.button_container span {
+  background: black;
+  border: none;
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+.button_container span:nth-of-type(2) {
+  top: 11px;
+}
+.button_container span:nth-of-type(3) {
+  top: 22px;
+}
+
+.overlay {
+  position: fixed;
+  background: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s, visibility 0.35s, height 0.35s;
+  overflow: hidden;
+}
+
+.overlay.open {
+  opacity: 0.9;
+  visibility: visible;
+  height: 100%;
+}
+.overlay.open li {
+  animation: fadeInRight 0.5s ease forwards;
+  animation-delay: 0.35s;
+}
+.overlay.open li:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+.overlay.open li:nth-of-type(3) {
+  animation-delay: 0.45s;
+}
+.overlay.open li:nth-of-type(4) {
+  animation-delay: 0.5s;
+}
+.overlay nav {
+  position: relative;
+  height: 70%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  font-weight: 400;
+  text-align: center;
+}
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  height: 100%;
+}
+.overlay ul li {
+  display: block;
+  height: 25%;
+  height: calc(100% / 4);
+  min-height: 50px;
+  position: relative;
+  opacity: 0;
+}
+.overlay ul li a {
+  display: block;
+  position: relative;
+  color: #FFF;
+  text-decoration: none;
+  overflow: hidden;
+}
+.overlay ul li a:hover:after, .overlay ul li a:focus:after, .overlay ul li a:active:after {
+  width: 100%;
+}
+.overlay ul li a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  transform: translateX(-50%);
+  height: 3px;
+  background: #FFF;
+  transition: 0.35s;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%;
   }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+section {
+  min-height: 500px;
+}
+#about {
+  height: 100vh;
+  background-color: orange;
+}
+#contact {
+  background-color: #341C09;
+  color: #D4E4F7;
+}
+.s-orange {
+  text-align: center;
+  max-width: var(--app-max-width);
+  height:100%;
+  margin: 0 auto;
+  color: #D4E4F7;
+}
+.s-orange h2 {
+  font-size: 2.5rem;
+  padding-top: 10%;
+  text-shadow: 2px 2px #000;
+}
+.s-black {
+  background: black;
+}
+
+.parallax {
+
+  /* Full height */
+  height: 100%; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax-meadow {
+  /* The image used */
+  background-image: url('./images/wiese.jpg');
+}
+
+.parallax-hex {
+  background-image: url('./images/waben.png');
+  /*background-image: url('https://img.freepik.com/vektoren-kostenlos/geometrischer-abstrakter-sechseckiger-hintergrund_1284-39488.jpg?w=1480&t=st=1667051155~exp=1667051755~hmac=0e2ed0e73e3195a3ba3eecf4b3d9bd5ed69c99a8c8b08df341ba010ed9ba6eb9');*/
+}
+
+.center-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+.center-box h1 {
+  font-size: 5rem;
+  color: white;
+}
+.center-box div {
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  text-shadow: 2px 2px #000;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.none-decoration {
+  text-decoration: none;
+  color: black;
 }
