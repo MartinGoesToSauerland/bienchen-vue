@@ -2,10 +2,9 @@
 import { ref } from 'vue';
 
 const menu = [
-    {ref: "./#home", name: "Home"},
-    {ref: "./#about", name: "About"},
-    {ref: "./#work", name: "Work"},
-    {ref: "./#contact", name: "Contact"},
+    {ref: "../#home", name: "Home"},
+    {ref: "../areas", name: "Areas"},
+    {ref: "../#contact", name: "Contact"},
 ];
 const isActiveBm = ref(false);
 const isOpenOverlay = ref(false);
@@ -28,7 +27,7 @@ const sleep = async (ms) => {
 <template>
     <header>
         <h1><router-link class="none-decoration" to="/">bienchenoase.de</router-link></h1>
-        <div class="button_container" 
+        <div class="button_container"
             id="toggle" :class="{
             'active': isActiveBm
           }"
@@ -37,8 +36,8 @@ const sleep = async (ms) => {
             <span class="middle"></span>
             <span class="bottom"></span>
         </div>
-        <div class="overlay" 
-            id="overlay" 
+        <div class="overlay"
+            id="overlay"
             :class="{
              'open': isOpenOverlay
           }">
@@ -49,6 +48,6 @@ const sleep = async (ms) => {
                     </li>
                 </ul>
             </nav>
-        </div>      
-    </header>    
+        </div>
+    </header>
 </template>
