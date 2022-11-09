@@ -1,7 +1,7 @@
 <template>
-    <div class="main">
-        <section class="spacer">
-        <h1 style="color: black;">404</h1>xxx
+    <main>
+        <section class="spacer container text-center">
+        <h1 style="color: black;">404</h1>..oh no!
         </section>
-    </div>
+    </main>
 </template>
