@@ -1,16 +1,16 @@
 <script setup>
     import { comhelper } from "../helpers/comhelper.js";
     import ModalBottom from "../components/ModalBottom.vue";
-    import { onMounted } from "vue";
-    import { ref } from "vue";
+    import { ref, inject, onMounted} from "vue";
     import { useRoute } from "vue-router";
 
+    const helper = inject('$store');
     // 0 = free, 1 = reserved, 2 = rented
     const area = ref(null);
     const areaData = ref(null);
     const route = useRoute();
 
-    const fetchArea = async () => {  
+    const fetchArea = async () => {
         area.value = await comhelper.getArea( route.params.id );
     }
     const fetchParcels = async () => {
@@ -52,21 +52,13 @@
       align();
       window.addEventListener("resize", align, false);
     }
-    
+
     onMounted(async () => {
+        helper.isLoading = true;
         await fetchArea();
         await fetchParcels();
         await buildHoneycomb();
-        (async function () {
-
-    })();
-        /*
-    const ps = document.querySelectorAll(".honeycomb .cell");
-    ps.forEach((p) => {
-        p.addEventListener("click", (e) => {
-        console.log(e.target);
-        });
-    });*/
+        helper.isLoading = false;
     });
     const showModal = ref(false);
     const obj = {};
@@ -80,7 +72,7 @@
     const hideModal = async () => {
         showModal.value = false;
         await fetchParcels();
-        await buildHoneycomb(); 
+        await buildHoneycomb();
         // @todo find a better solution with out fetching data again on evry modal close
     }
 
@@ -95,7 +87,7 @@
       <p>50qm zu einer Laufzeit von 12 Monate für 50 Euro.</p>
     </div>
   </div>
-  
+
   <fieldset style="">
 
     <legend>Legend</legend>
@@ -133,7 +125,7 @@
       </div>
     </div>
   </section>
-  <modal-bottom v-if="showModal" :contentData="obj" @closeEvent="hideModal()"></modal-bottom>
+  <ModalBottom v-if="showModal" :contentData="obj" @closeEvent="hideModal()" />
 </template>
 
 <style scoped>

@@ -1,10 +1,19 @@
 <script setup>
 import { ref } from 'vue';
+import { inject } from "vue";
+const helper = inject('$store');
+console.log(helper);
 
 const menu = [
+    /*
     {ref: "../#home", name: "Home"},
     {ref: "../areas", name: "Areas"},
     {ref: "../#contact", name: "Contact"},
+*/
+    {ref: { path: '../', hash: '#home' }, name: "Home"},
+    {ref: "../areas", name: "Areas"},
+    {ref: { path: '../', hash: '#contact' }, name: "Contact"},
+    
 ];
 const isActiveBm = ref(false);
 const isOpenOverlay = ref(false);
@@ -25,6 +34,9 @@ const sleep = async (ms) => {
 </script>
 
 <template>
+    <div v-if="helper.isLoading">
+        <LoadingSpinner />
+    </div>
     <header>
         <h1><router-link class="none-decoration" to="/">bienchenoase.de</router-link></h1>
         <div class="button_container"
@@ -44,8 +56,9 @@ const sleep = async (ms) => {
             <nav class="overlay-menu">
                 <ul>
                     <li v-for="(link, index) in menu" :key="index">
-                        <a :href="link.ref" @click="clicked">{{ link.name }}</a>
+                        <router-link :to="link.ref" @click="clicked">{{ link.name }}</router-link>
                     </li>
+                    
                 </ul>
             </nav>
         </div>

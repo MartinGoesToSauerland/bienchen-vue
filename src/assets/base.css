@@ -24,12 +24,12 @@
   --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   --border-radius: 8px;
   --small-font-size: 0.8rem;
-  --big-font-size: 2rem;  
+  --big-font-size: 2rem;
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white-soft);
+  --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -53,6 +53,7 @@
 * {
   padding: 0;
   scroll-margin-top: 80px;
+  touch-action: manipulation;
 }
 
 body {
@@ -70,4 +71,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+input, textarea {
+  font-size: 16px!important;
 }
