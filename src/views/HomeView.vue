@@ -1,5 +1,14 @@
 <script setup>
-import ContactForm from "../components/ContactForm.vue"
+import ContactForm from "../components/ContactForm.vue";
+import { inject, onMounted} from "vue";
+
+const helper = inject('$store');
+onMounted(async () => {
+  helper.isLoading = true;
+  await new Promise(r => setTimeout(r, 200)); // sleep  
+  helper.isLoading = false;  
+  
+});
 </script>
 <template>
     <main>
@@ -83,11 +92,11 @@ import ContactForm from "../components/ContactForm.vue"
   }
 
   .banner-a {
-    background-image: url('./images/logo-1.webp');
+    background-image: url('@/assets/images/logo-1.webp');
   }
 
   .banner-b {
-    background-image: url('./images/logo-2.webp');
+    background-image: url('@/assets/images/logo-2.png');
   }
 
 </style>
