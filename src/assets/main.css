@@ -1,11 +1,11 @@
 @import './base.css';
 
 #app {
-  xxx_max-width: var(--app-max-width);
-  xxx_margin: 0 auto;
   font-weight: normal;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  display:flex; 
+  flex-direction:column;
+  
 }
 
 .container {
@@ -13,32 +13,10 @@
   margin: 0 auto;
   padding:10px;
 }
-/*
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-*/
-/*
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-}
-*/
 
 main {
   margin-top: 90px;
+  flex: 1;
 }
 
 footer {
@@ -245,12 +223,7 @@ section {
 }
 .parallax-meadow {
   /* The image used */
-  background-image: url('./images/wiese.jpg');
-}
-
-.parallax-hex {
-  background-image: url('./images/waben.png');
-  /*background-image: url('https://img.freepik.com/vektoren-kostenlos/geometrischer-abstrakter-sechseckiger-hintergrund_1284-39488.jpg?w=1480&t=st=1667051155~exp=1667051755~hmac=0e2ed0e73e3195a3ba3eecf4b3d9bd5ed69c99a8c8b08df341ba010ed9ba6eb9');*/
+  background-image: url('@/assets/images/wiese.jpg');
 }
 
 .center-box {
@@ -284,6 +257,9 @@ section {
 }
 .bold {
   font-weight: bold;
+}
+.hide {
+  display: none !important;
 }
 .text-color-success {
   color: green;
@@ -355,7 +331,8 @@ button[disabled]{
 input, select, textarea {
   box-sizing: border-box;
   box-shadow: var(--shadow);
-  border: 1px solid var(--gray-soft);;
+  -webkit-appearance: none;
+  border: 1px solid var(--gray-soft);
   border-radius: 8px;
   padding:19px;
   background: white;
@@ -374,3 +351,43 @@ label {
   font-size: 0.8rem;
   margin-left:10px;
 }
+
+
+@media (max-width: 400px) {
+
+  header h1 {
+    font-size: 1.4rem;
+    padding: 5px;
+  }
+
+  .modal-footer-wrapper .btn {
+    font-size: 1.4rem;
+    padding:10px 10px;
+  }
+
+}
+
+
+/*
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+*/
+/*
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+}
+*/
