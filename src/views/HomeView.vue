@@ -1,14 +1,36 @@
 <script setup>
+import { comhelper } from "../helpers/comhelper.js";
 import ContactForm from "../components/ContactForm.vue";
-import { inject, onMounted} from "vue";
+import AnmiatedChart from "../components/AnmiatedChart.vue";
+import { watch, inject, onMounted, ref} from "vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const helper = inject('$store');
+let rentedAreasInProcent = ref(null);
 onMounted(async () => {
   helper.isLoading = true;
-  await new Promise(r => setTimeout(r, 200)); // sleep  
-  helper.isLoading = false;  
-  
+  await new Promise(r => setTimeout(r, 200)); // sleep
+  helper.isLoading = false;
+  scrollIfHashRoute();
+  rentedAreasInProcent.value = await comhelper.getStatsParcelRented();
 });
+
+const scrollIfHashRoute = function() {
+    console.log("route.hash", route.hash)
+    if (! route.hash) {
+      return;
+    }
+    const element = document.querySelector(route.hash);
+    const postionHeight = element.getBoundingClientRect();
+    window.scrollTo(0, postionHeight.top + window.scrollY);
+}
+watch (
+  () => route.hash,
+  (current, prev) => {
+    scrollIfHashRoute()
+  }
+);
 </script>
 <template>
     <main>
@@ -35,23 +57,23 @@ onMounted(async () => {
 
       </section>
 
-      <!--section id="about">
-        <div class="s-orange">
-
-          <h2>Flächen verfügbar: 10.000qm/2</h2>
-          <h2>Flächen in Blühwiesen umgewandelt: 200qm/2</h2>
-          <h2>...</h2>
-        </div>
-      </section-->
-
       <section id="work">
         <div class="parallax x-parallax-hex">
-          <div class="container text-center" style="column-count: 1; font-size: 1.1rem; color: black; padding:20px 10px 20px 10px;">
+          <div class="container text-center text-justify" style="column-count: 1; font-size: 1.1rem; color: black; padding:20px 10px 20px 10px;">
             <h2>Kurzvorstellung</h2>
             In den letzten Jahren ist ein zunehmendes Bienensterben zu beobachten. Die Ursachen hierfür sind vielfältig und reichen von Krankheiten über den Klimawandel bis hin zu bestimmten Formen der landwirtschaftlichen Nutzung. Die Folgen des zunehmenden Bienensterbens können zu einer ernsten Bedrohung werden. Wenn Bienen fehlen, stehen diese nicht mehr als Bestäuber der Pflanzen zur Verfügung. Etwa ein Drittel der menschlichen Lebensmittel aber wächst ausschließlich nach der Bestäubung durch Bienen. Folglich droht eine große Lücke in der menschlichen Versorgung, wenn die entsprechenden Nahrungsmittel wegfallen. Daher müssen alle Anstrengungen unternommen werden, um das zunehmende Bienensterben wieder zu stoppen.
 
             Hier setzt die Idee von Bienchenoase an. Wir wollen bislang landwirtschaftlich genutzte Flächen komplett aus der landwirtschaftlichen Produktion herausnehmen, um dort bienenfreundliche Biotope zu schaffen. Dies erfordert insbesondere die Ansiedelung von Pflanzenarten, deren Blüten viel Pollen und Nektar produzieren. Die geschaffenen Biotope sollen den Bienen dann eine ausreichende Nahrungsgrundlage vom Frühjahr bis in den Herbst hinein bieten. Bienchenoase möchte daher Menschen vernetzen, welche einen Beitrag zum Schutz der Bienen leisten wollen. In diesem Rahmen werden wir landwirtschaftliche Flächen anpachten. Im Fokus stehen hierbei konventionell genutzte Flächen – also landwirtschaftliche Flächen mit einem intensiven Einsatz mineralischer Dünger sowie chemischer Pflanzenschutzmittel (Insektizide, Herbizide, Fungizide). Die angepachteten Flächen werden wir parzellieren und im Rahmen mit Ihnen geschlossener Patenschaften in bienenfreundliche Biotope umwandeln.
           </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div v-if="rentedAreasInProcent" class="px-10" classs="s-orange" style="background: yellowgreen; height: 100%;">
+          <AnmiatedChart :percent="rentedAreasInProcent" strokeColor="green" chartTitle="Parcels rented"/>
+          <!--h2>Flächen verfügbar: 10.000qm/2</h2>
+          <h2>Flächen in Blühwiesen umgewandelt: 200qm/2</h2>
+          <h2>...</h2-->
         </div>
       </section>
 

@@ -166,7 +166,6 @@
 .honeycomb .cell {
   position: relative;
   display: block;
-  vertical-align: center;
   width: 100px;
   height: 150px;
   margin: -26.5px 5.5px -26.5px 5.5px;
@@ -193,8 +192,8 @@
   color: #444;
 }
 .honeycomb .cell .cell-inner .content:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: #341C09 !important;
+  color: #fff !important;
 }
 .honeycomb .cell:last-child {
   margin-right: 0;

@@ -79,7 +79,7 @@
                                     {{ area.description }}<br/>
                                     {{area.size_qm}}qm²
                                 </td>
-                                <td><router-link :to="'/areas/'+area.id">go</router-link></td>
+                                <td><router-link :to="'/areas/'+area.id" class="btn btn-green">go</router-link></td>
                             </tr>
                         </table>
                     </div>

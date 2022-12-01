@@ -28,17 +28,24 @@ export const comhelper = {
         const d = await fetch(settings.apiUri + 'areas', this.fetchOptions);
         const j = await d.json();
         return j;
-    },      
+    },
     async getArea(id) {
         const d = await fetch(settings.apiUri + 'areas/' + id, this.fetchOptions);
         const j = await d.json();
         return j.data;
-    },    
+    },
     async getParcelsByAreaId(id) {
         const d = await fetch(settings.apiUri + 'parcels?area_id=' + id, this.fetchOptions);
         const j = await d.json();
         return j;
-    },          
+    },
+    async getStatsParcelRented() {
+        // return 80;
+        const d = await fetch(settings.apiUri + 'stats/parcels_rented', this.fetchOptions);
+        const j = await d.json();
+        return j;        
+    },
+
     async reserve(areaId, parcelId, userData, token = null) {
 
         // testing https://httpbin.org/post
@@ -66,7 +73,7 @@ export const comhelper = {
             console.log("ERROR", err)
         }
 
-    },    
+    },
     async sendMail(data) {
         try {
             const rawResponse = await fetch(settings.apiUri + 'email', {
@@ -85,6 +92,6 @@ export const comhelper = {
 
         } catch (err) {
             console.log("ERROR", err)
-        }        
+        }
     }
 }
