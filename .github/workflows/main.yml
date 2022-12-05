@@ -3,6 +3,7 @@ on:
     branches: 
       - main
 name: Deploy vueJs frontend on push (production)
+
 jobs:
   build:
     runs-on: ubuntu-latest
