@@ -13,12 +13,12 @@
     onMounted(async () => {
         helper.isLoading = true
         areas.value = await comhelper.getAreas();
-
+/*
         areas.value = areas.value.map( _ => {
             _.geo_json = JSON.parse(_.geo_json);
             return _;
         });
-
+*/
         geojsonFeature = areas.value.map(_ => _.geo_json)
 
         map = L.map('map', {

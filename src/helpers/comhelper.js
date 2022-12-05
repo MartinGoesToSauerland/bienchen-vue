@@ -12,6 +12,7 @@ export const comhelper = {
             'Accept': 'application/json'
         }
     },
+    /*
     async getSurveyData(countryId) {
         if (! countryId) {
             console.warn("From which country you want brands?")
@@ -23,11 +24,11 @@ export const comhelper = {
         const d = await fetch(settings.apiUri + 'country/' + countryId, options);
         const j = await d.json();
         return j;
-    },
+    },*/
     async getAreas() {
         const d = await fetch(settings.apiUri + 'areas', this.fetchOptions);
         const j = await d.json();
-        return j;
+        return j.data.areas;
     },
     async getArea(id) {
         const d = await fetch(settings.apiUri + 'areas/' + id, this.fetchOptions);
@@ -37,7 +38,8 @@ export const comhelper = {
     async getParcelsByAreaId(id) {
         const d = await fetch(settings.apiUri + 'parcels?area_id=' + id, this.fetchOptions);
         const j = await d.json();
-        return j;
+        console.log(1, j.data.parcels)        
+        return j.data.parcels;
     },
     async getStatsParcelRented() {
         // return 80;
