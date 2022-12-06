@@ -333,6 +333,19 @@ button[disabled]{
   color: lightgrey;
   cursor: not-allowed;
 }
+/* octagon global styles */
+.rented {
+  background-color: #ffaa00 !important;
+}
+.reserved {
+  background-color: #ffcc00 !important;
+}
+.free {
+  background-color: white !important;
+}
+.free:hover {
+color: gray !important;
+}
 
 /* Forms */
 .form-container {

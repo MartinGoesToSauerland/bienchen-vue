@@ -11,8 +11,8 @@ const menu = [
     {ref: "../#contact", name: "Contact"},
 */
     {ref: { path: '../', hash: '#home' }, name: "Home"},
-    {ref: "../areas", name: "Areas"},
-    {ref: { path: '../', hash: '#contact' }, name: "Contact"},
+    {ref: "../areas", name: "Flächen"},
+    {ref: { path: '../', hash: '#contact' }, name: "Kontakt"},
     
 ];
 const isActiveBm = ref(false);

@@ -75,7 +75,7 @@ export default {
   <div id="myModal" class="modal" :class="{'hide': showModal}">
 
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content rented">
       <div class="modal-header">
           <div class="container">
         <!--span class="close">&times;</span-->
@@ -84,21 +84,24 @@ export default {
       </div>
       <div class="modal-body container" style="min-height: 50vh">
         <div class="text-center" v-if="contentData.value.status == 2">
-            <p>Owner: {{ contentData.value.details.firstname}} {{ contentData.value.details.lastname}}</p>
-            <p>Rented since: {{ contentData.value.details.start_at.split("T")[0]}}</p>
-            <p>Rented until: {{ contentData.value.details.end_at.split("T")[0]}}</p>
+          <h1>Vermietet</h1>
+          <h2>von: {{ contentData.value.details.firstname }}</h2>
+          <p>Seit: {{ contentData.value.details.start_at.split("T")[0] }}</p>
         </div>
 
         <div class="container text-center" v-if="contentData.value.status == 1">
-            <p>Reserved for: {{ contentData.value.details.firstname}} {{ contentData.value.details.lastname}}</p>
-            <p>Reserved on: {{ contentData.value.details.created_at}}</p>
+            <h2>Reserviert für: {{ contentData.value.details.firstname}}</h2>
+            <p>am: {{ contentData.value.details.created_at.split("T")[0]}}</p>
             <br/>
-            <p>Status: Wating for expanse...</p>
+            <p>Status: Wartend ...</p>
 
         </div>
 
-        <div v-if="contentData.value.status == 0">
-            <p>Some other text...</p>
+        <div v-if="contentData.value.status == 0" class="form-text">
+            <div>
+              <h2 class="mb-10">Flächenpatenschaft beantragen</h2>
+              Jetzt ganz einfach die Patenschaft für die ausgewählte Fläche sichern! Geben Sie Ihre Kontaktdaten in das Formular ein. Sie erhalten umgehend eine Bestätigungsmail samt Kontoverbindung. Überweisen Sie danach innerhalb von 14 Tagen den Rechnungsbetrag und Sie sind für die nächsten zwölf Monate der Pate für die ausgewählte Fläche.
+            </div>
             <form v-if="showForm">
                 <div class="form-container">
                     <div class="input-group">
@@ -189,6 +192,13 @@ export default {
 </template>
 
 <style scoped>
+.form-text {
+  display: flex; 
+  gap: 20px;
+}
+.form-text > * {
+  width:50%;
+}
 /* The Modal (background) */
 .hide {
   display: none; /* Hidden by default */

@@ -90,18 +90,18 @@
 
   <fieldset style="">
 
-    <legend>Legend</legend>
+    <legend>Legende</legend>
     <div class="legend-item-container">
         <span class="legend-item-box free"></span>
-        <span class="legend-text">Free</span>
+        <span class="legend-text">Frei</span>
     </div>
     <div class="legend-item-container"><!-- added class -->
         <span class="legend-item-box reserved"></span>
-        <span class="legend-text">Reserved</span>
+        <span class="legend-text">Reserviert</span>
     </div>
     <div class="legend-item-container"><!-- added class -->
         <span class="legend-item-box rented"></span>
-        <span class="legend-text">Rented</span>
+        <span class="legend-text">Vermietet</span>
     </div>
 
   </fieldset>
@@ -216,18 +216,7 @@
 .honeycomb .cell {
     cursor: pointer;
 }
-.rented {
-    background-color: #ffaa00 !important;
-}
-.reserved {
-    background-color: #ffcc00 !important;
-}
-.free {
-    background-color: white !important;
-}
-.free:hover {
-  color: gray !important;
-}
+
 /* legend box*/
 fieldset {
     font-family: sans-serif;

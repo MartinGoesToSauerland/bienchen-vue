@@ -54,20 +54,19 @@
   <main>
       <div style="background: white;">
         <div class="container" >
-            <h1>Area Overview</h1>
+            <h1>Flächen Übersicht</h1>
             <div>
                 <div v-for="area in areas" :key="area.id">
-                    {{ area.name }} {{ area.country }} {{ area.state }} {{ area.zip }} {{ area.street }}
                     <div style="overflow-x:auto;">
                         <table>
                             <thead>
-                                <th>id</th>
-                                <th>Country</th>
-                                <th>State</th>
-                                <th>ZIP</th>
-                                <th>Street</th>
-                                <th>Description</th>
-                                <th>Vist</th>
+                                <th></th>
+                                <th>Land</th>
+                                <th>Bundesland</th>
+                                <th>PLZ</th>
+                                <th>Strasse</th>
+                                <th>Info</th>
+                                <th></th>
                             </thead>
                             <tr>
                                 <td>{{ area.id }}</td>
@@ -79,7 +78,7 @@
                                     {{ area.description }}<br/>
                                     {{area.size_qm}}qm²
                                 </td>
-                                <td><router-link :to="'/areas/'+area.id" class="btn btn-green">go</router-link></td>
+                                <td><router-link :to="'/areas/'+area.id" class="btn btn-green">los</router-link></td>
                             </tr>
                         </table>
                     </div>
