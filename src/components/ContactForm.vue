@@ -61,9 +61,9 @@ const send = async (event) => {
       
     <form id="form" v-if="showForm">
       
-        <legend>Contact Form</legend>
+        <legend>Kontakt Formular</legend>
         <div class="mb-10 input-group">
-          <label for="name">Full Name</label><br />
+          <label for="name">Name</label><br />
           <input
             @input="isSubmitable('name')"
             v-model="data.name"
@@ -76,7 +76,7 @@ const send = async (event) => {
           <div class="form-error text-small" v-if="error">{{ error.name }}</div>
         </div>
         <div class="mb-10 input-group">
-          <label for="email">Email Address</label><br />
+          <label for="email">Email Adresse</label><br />
           <input
             @input="isSubmitable('email')"
             v-model="data.email"
@@ -89,7 +89,7 @@ const send = async (event) => {
           <div class="form-error text-small" v-if="error">{{ error.email }}</div>
         </div>
         <div class="mb-10">
-          <label for="phone">Phone Number</label>
+          <label for="phone">Telefon</label>
           <br />
           <input
             v-model="data.phone"
@@ -101,7 +101,7 @@ const send = async (event) => {
           />
         </div>
         <div>
-          <label for="message">Your Message</label>
+          <label for="message">Deine Nachricht</label>
           <br />
           <textarea
             @input="isSubmitable('message')"
@@ -118,9 +118,10 @@ const send = async (event) => {
         <button
             @click.prevent="send" 
             class="btn btn-success mb-10"
+            style="width:100%;"
             :disabled="isDisabled"
             :class="{active: !isDisabled}"
-        >Send Message</button>
+        >Senden</button>
       
     </form>
     <div v-else>

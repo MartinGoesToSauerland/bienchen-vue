@@ -70,7 +70,7 @@ watch (
 
       <section id="about">
         <div v-if="rentedAreasInProcent" class="px-10" classs="s-orange" style="background: yellowgreen; height: 100%;">
-          <AnmiatedChart :percent="rentedAreasInProcent" strokeColor="green" chartTitle="Parcels rented"/>
+          <AnmiatedChart :percent="rentedAreasInProcent" strokeColor="green" chartTitle="Flächen vermietet"/>
           <!--h2>Flächen verfügbar: 10.000qm/2</h2>
           <h2>Flächen in Blühwiesen umgewandelt: 200qm/2</h2>
           <h2>...</h2-->
